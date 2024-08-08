@@ -1,6 +1,7 @@
 package lk.ijse.thogakade.bo;
 
 import lk.ijse.thogakade.bo.custom.impl.CustomerBOImpl;
+import lk.ijse.thogakade.bo.custom.impl.ItemBOImpl;
 
 public class BOFactory {
 
@@ -21,8 +22,8 @@ public class BOFactory {
         switch (types){
             case CUSTOMER :
                 return (T) new CustomerBOImpl();
-//            case ITEM_BO:
-//                return (T) new ItemBOImpl();
+            case ITEM:
+                return (T) new ItemBOImpl();
 //            case ORDER_BO:
 //                return (T) new OrderBOImpl();
 //            case ORDER_DETAILS_BO:
