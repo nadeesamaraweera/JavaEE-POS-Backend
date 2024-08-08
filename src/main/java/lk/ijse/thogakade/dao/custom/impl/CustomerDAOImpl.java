@@ -1,5 +1,6 @@
-package lk.ijse.thogakade.dao;
+package lk.ijse.thogakade.dao.custom.impl;
 
+import lk.ijse.thogakade.Util.CrudUtil;
 import lk.ijse.thogakade.dao.custom.CustomerDAO;
 import lk.ijse.thogakade.entity.Customer;
 
@@ -8,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CustomerDAOIMPL implements CustomerDAO {
+public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean save(Connection connection, Customer entity) throws SQLException {
