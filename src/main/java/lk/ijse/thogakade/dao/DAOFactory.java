@@ -1,9 +1,10 @@
 package lk.ijse.thogakade.dao;
 
 import lk.ijse.thogakade.dao.custom.impl.CustomerDAOImpl;
+import lk.ijse.thogakade.dao.custom.impl.ItemDAOImpl;
 
 
-    public class DAOFactory {
+public class DAOFactory {
         private static DAOFactory daoFactory;
 
         private DAOFactory() {
@@ -21,8 +22,8 @@ import lk.ijse.thogakade.dao.custom.impl.CustomerDAOImpl;
         switch (types){
             case CUSTOMER:
                 return (T) new CustomerDAOImpl();
-//            case ITEM_DAO:
-//                return (T) new ItemDAOImpl();
+            case ITEM:
+                return (T) new ItemDAOImpl();
 //            case ORDER_DAO:
 //                return (T) new OrderDAOImpl();
 //            case ORDER_DETAILS_DAO:
