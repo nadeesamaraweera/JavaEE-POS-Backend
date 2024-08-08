@@ -3,10 +3,12 @@ package lk.ijse.thogakade.bo.custom.impl;
 import lk.ijse.thogakade.bo.custom.OrderBO;
 import lk.ijse.thogakade.dao.DAOFactory;
 import lk.ijse.thogakade.dao.custom.OrderDAO;
+import lk.ijse.thogakade.dao.custom.OrderDetailDAO;
 import lk.ijse.thogakade.db.ConnectionManager;
 import lk.ijse.thogakade.dto.ItemDTO;
 import lk.ijse.thogakade.dto.OrderDTO;
 import lk.ijse.thogakade.entity.Order;
+import lk.ijse.thogakade.entity.OrderDetails;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,8 +20,8 @@ public class OrderBOImpl implements OrderBO {
             (OrderDAO) DAOFactory.getInstance()
                     .getDAO(DAOFactory.DAOType.Order);
 
-    OrderDetailDao orderItemDetailDAO =
-            (OrderDetailDao) DAOFactory.getInstance()
+    OrderDetailDAO orderItemDetailDAO =
+            (OrderDetailDAO) DAOFactory.getInstance()
                     .getDAO(DAOFactory.DAOType.OrderDetail);
 
     @Override
