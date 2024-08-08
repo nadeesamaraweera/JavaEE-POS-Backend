@@ -2,24 +2,22 @@ package lk.ijse.thogakade.dao;
 
 import lk.ijse.thogakade.dao.custom.impl.CustomerDAOImpl;
 
-public class DAOFactory {
 
-    private static DAOFactory daoFactory;
+    public class DAOFactory {
+        private static DAOFactory daoFactory;
 
-    private DAOFactory(){
+        private DAOFactory() {
+        }
 
-    }
+        public static DAOFactory getInstance() {
+            return (daoFactory == null) ? (daoFactory = new DAOFactory()) : daoFactory;
+        }
 
-    public static DAOFactory getDaoFactory(){
-        return (daoFactory==null) ? daoFactory = new DAOFactory() : daoFactory;
+        public enum DAOType {
+            CUSTOMER, ITEM, Order , OrderDetail
+        }
 
-    }
-
-    public enum DAOTypes{
-        CUSTOMER
-    }
-
-    public <T extends SuperDAO> T getDAO (DAOTypes types){
+    public <T extends SuperDAO> T getDAO (DAOType types){
         switch (types){
             case CUSTOMER:
                 return (T) new CustomerDAOImpl();

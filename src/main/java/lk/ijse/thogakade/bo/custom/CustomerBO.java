@@ -6,16 +6,16 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface CustomerBO {
 
-    boolean saveCustomer(Connection connection, CustomerDTO customerDTO) throws SQLException;
+    boolean saveCustomer(CustomerDTO customerDto) throws IOException, SQLException;
+    CustomerDTO searchCustomer(String id) throws IOException, SQLException;
 
-    ArrayList<CustomerDTO> getAllCustomers(Connection connection) throws SQLException;
+    boolean updateCustomer(CustomerDTO customerDto) throws SQLException;
 
-//    CustomerDTO getCustomerById(Connection connection, String id) throws SQLException;
+    boolean deleteCustomer(String id) throws SQLException;
 
-    boolean updateCustomer(Connection connection, CustomerDTO customerDTO) throws SQLException;
-
-    boolean deleteCustomer(Connection connection, String id) throws SQLException;
+    List<CustomerDTO> getAllCustomers() throws SQLException;
 }

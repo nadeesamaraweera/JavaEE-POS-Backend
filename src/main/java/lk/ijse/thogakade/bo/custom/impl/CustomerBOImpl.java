@@ -6,49 +6,66 @@ import lk.ijse.thogakade.dao.custom.CustomerDAO;
 import lk.ijse.thogakade.dto.CustomerDTO;
 import lk.ijse.thogakade.entity.Customer;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerBOImpl implements CustomerBO {
 
-        CustomerDAO customerDAO = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
-        @Override
-        public boolean saveCustomer(Connection connection, CustomerDTO dto) throws SQLException {
-            return customerDAO.save(connection,new Customer(dto.getId(),dto.getName(),dto.getAddress(),dto.getSalary()));
-        }
+    CustomerDAO customerDao = (CustomerDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.CUSTOMER);
 
-        @Override
-        public ArrayList<CustomerDTO> getAllCustomers(Connection connection) throws SQLException {
-            ArrayList<Customer> customersList = customerDAO.getAll(connection);
-            ArrayList<CustomerDTO> customerDTOList = new ArrayList<>();
+    @Override
+    public boolean saveCustomer(CustomerDTO customerDto) throws IOException, SQLException {
+        return customerDao.save(
+                new Customer(
+                        customerDto.getId(),
+                        customerDto.getName(),
+                        customerDto.getAddress(),
+                        customerDto.getSalary()
+                )
+        );
 
-            for (Customer customer : customersList) {
-                CustomerDTO dto = new CustomerDTO(
-                        customer.getId(),
-                        customer.getName(),
-                        customer.getAddress(),
-                        customer.getSalary()
-                );
-                customerDTOList.add(dto);
-            }
-            return customerDTOList;
-        }
+    }
 
-
-
-        @Override
-        public boolean updateCustomer(Connection connection, CustomerDTO dto) throws SQLException {
-            return customerDAO.update(connection,new Customer(dto.getId(),dto.getName(),dto.getAddress(),dto.getSalary()));
-
-        }
-
-        @Override
-        public boolean deleteCustomer(Connection connection, String id) throws SQLException {
-            return customerDAO.delete(connection,id);
-
-
+    @Override
+    public CustomerDTO searchCustomer(String id) throws IOException, SQLException {
+        Customer customer = customerDao.getData(id);
+        if (customer != null) {
+            System.out.println(customer+"=============================== bo");
+            return new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getSalary());
+        } else {
+            return null;
         }
     }
 
+    @Override
+    public boolean updateCustomer(CustomerDTO customerDto) throws SQLException {
+        return customerDao.update(
+                new Customer(
+                        customerDto.getId(),
+                        customerDto.getName(),
+                        customerDto.getAddress(),
+                        customerDto.getSalary()
+                )
+        );
+    }
 
+    @Override
+    public boolean deleteCustomer(String id) throws SQLException {
+        return customerDao.delete(id);
+    }
+
+    @Override
+    public List<CustomerDTO> getAllCustomers() throws SQLException {
+        List<Customer> customerList = customerDao.getAll();
+
+        if (customerList != null) {
+            return customerList.stream().map(customer -> new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getSalary())).toList();
+        } else {
+            return null;
+        }
+
+    }
+}

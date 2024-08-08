@@ -4,19 +4,20 @@ import lk.ijse.thogakade.bo.custom.impl.CustomerBOImpl;
 
 public class BOFactory {
 
-    private static  BOFactory boFactory;
-    private BOFactory() {
+    private static BOFactory boFactory;
+
+    private BOFactory() {}
+
+    public static BOFactory getBoFactory() {
+        return (boFactory == null) ?
+                boFactory = new BOFactory() : boFactory;
     }
 
-    public static BOFactory getBoFactory(){
-        return (boFactory==null)? boFactory=new BOFactory():boFactory;
+    public enum BOTypes {
+        CUSTOMER, ITEM, Order
     }
 
-    public enum BoTypes{
-        CUSTOMER
-    }
-
-    public <T extends  SuperBO> T getBO(BoTypes types){
+    public <T extends  SuperBO> T getBO(BOTypes types){
         switch (types){
             case CUSTOMER :
                 return (T) new CustomerBOImpl();
