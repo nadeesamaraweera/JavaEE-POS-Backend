@@ -16,21 +16,28 @@ create table customer(
 );
 
 create table item(
-                      item_id varchar(20) NOT NULL PRIMARY KEY ,
-                      item_name  varchar(50) NOT NULL ,
-                      item_qty   int         NOT NULL ,
-                      item_price double      NOT NULL
+                      item_id VARCHAR(20) NOT NULL PRIMARY KEY ,
+                      item_name  VARCHAR(50) NOT NULL ,
+                      item_qty   INT         NOT NULL ,
+                      item_price DOUBLE     NOT NULL
 );
 
-create table `order`
-(
-                     id          varchar(60) NOT NULL PRIMARY KEY ,
-                     date        varchar(60) NOT NULL ,
-                     customer_id varchar(60) NOT NULL ,
-                     total       double      NOT NULL ,
-                     discount    varchar(20) NOT NULL ,
-                     sub_total   double      NOT NULL ,
-                     cash        double      NOT NULL ,
-                     balance     double      NOT NULL ,
+create table `order`(
+                     id          VARCHAR(60) NOT NULL PRIMARY KEY ,
+                     date        VARCHAR(60) NOT NULL ,
+                     customer_id VARCHAR(60) NOT NULL ,
+                     total       DOUBLE      NOT NULL ,
+                     discount    VARCHAR(20) NOT NULL ,
+                     sub_total   DOUBLE     NOT NULL ,
+                     cash        DOUBLE      NOT NULL ,
+                     balance     DOUBLE     NOT NULL ,
                      CONSTRAINT order_customer_cust_id_fk FOREIGN KEY (customer_id)REFERENCES customer (cust_id)
+);
+
+create table order_detail(
+                     order_id VARCHAR(60) NULL ,
+                     item_id  VARCHAR(60) NULL ,
+                     qty      INT       NOT NULL ,
+   CONSTRAINT order_detail_item_item_id_fk FOREIGN KEY (item_id) REFERENCES item (item_id),
+    CONSTRAINT order_detail_order_id_fk FOREIGN KEY (order_id) REFERENCES `order` (id)
 );

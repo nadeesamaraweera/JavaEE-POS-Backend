@@ -6,7 +6,7 @@ import lk.ijse.thogakade.entity.Order;
 import java.sql.SQLException;
 import java.util.List;
 
-public class OrderDAO extends SuperDAO {
+public interface OrderDAO extends SuperDAO {
     boolean save(Order entity) throws SQLException;
     List<Order> getAll() throws SQLException;
 }
