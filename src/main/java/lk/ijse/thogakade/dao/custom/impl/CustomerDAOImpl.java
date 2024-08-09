@@ -23,7 +23,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public Customer getData(String id) throws SQLException {
-        ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE cust_id=?", id);
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE id=?", id);
         if (resultSet.next()) {
             return new Customer(
                     resultSet.getString(1),
@@ -37,7 +37,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean update(Customer customer) throws SQLException {
-        return SQLUtil.execute("UPDATE customer SET cust_name = ? , cust_address = ? , cust_salary = ? WHERE id=?",
+        return SQLUtil.execute("UPDATE customer SET name = ? , address = ? , salary = ? WHERE id=?",
                 customer.getName(),
                 customer.getAddress(),
                 customer.getSalary(),
@@ -48,7 +48,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean delete(String id) throws SQLException {
-        return SQLUtil.execute("DELETE FROM customer WHERE cust_id=?", id);
+        return SQLUtil.execute("DELETE FROM customer WHERE id=?", id);
     }
 
     @Override
