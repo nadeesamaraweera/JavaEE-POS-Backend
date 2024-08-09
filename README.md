@@ -39,7 +39,7 @@ Thogakade POS System is a robust web-based Point of Sale (POS) application desig
 ### Backend: 
 * Java EE,
 * Tomcat for powerful server-side management and processing.
-* API Documentation: Comprehensive API endpoints and usage instructions are available in the Postman Documentation.
+* API Documentation: [Postman Documentation](https://documenter.getpostman.com/view/35385577/2sA3s1pYAs)
 
 
 ## **Controllers and Endpoints**
@@ -76,8 +76,10 @@ Thogakade POS System is a robust web-based Point of Sale (POS) application desig
 ## API Documentation
 
 Detailed API documentation is available through Postman. You can access it here.
+[Postman Documentation](https://documenter.getpostman.com/view/35385577/2sA3s1pYAs)
 
 
 
 ## License
-This project is licensed under the MIT License. For more information, see the LICENSE file.
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -15,6 +15,7 @@ import lk.ijse.thogakade.bo.custom.CustomerBO;
 import lk.ijse.thogakade.dto.CustomerDTO;
 import org.slf4j.Logger;
 
+
 @WebServlet( urlPatterns = "/customer" )
 public class CustomerController extends HttpServlet {
     static Logger logger = org.slf4j.LoggerFactory.getLogger(CustomerController.class);

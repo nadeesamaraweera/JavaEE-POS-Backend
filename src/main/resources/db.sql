@@ -25,13 +25,13 @@ create table item(
 create table `order`(
                      id          VARCHAR(60) NOT NULL PRIMARY KEY ,
                      date        VARCHAR(60) NOT NULL ,
-                     customer_id VARCHAR(60) NOT NULL ,
+                     cust_id     VARCHAR(50)  ,
                      total       DOUBLE      NOT NULL ,
                      discount    VARCHAR(20) NOT NULL ,
                      sub_total   DOUBLE     NOT NULL ,
                      cash        DOUBLE      NOT NULL ,
                      balance     DOUBLE     NOT NULL ,
-                     CONSTRAINT order_customer_cust_id_fk FOREIGN KEY (customer_id)REFERENCES customer (cust_id)
+                     CONSTRAINT order_customer_cust_id_fk FOREIGN KEY (cust_id)REFERENCES customer (cust_id)
 );
 
 create table order_detail(
