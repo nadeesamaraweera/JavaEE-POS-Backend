@@ -25,7 +25,7 @@ create table item(
 create table `order`(
                      id          VARCHAR(60) NOT NULL PRIMARY KEY ,
                      date        VARCHAR(60) NOT NULL ,
-                     cust_id     VARCHAR(50)  ,
+                     cust_id     VARCHAR(50) NOT NULL ,
                      total       DOUBLE      NOT NULL ,
                      discount    VARCHAR(20) NOT NULL ,
                      sub_total   DOUBLE     NOT NULL ,
