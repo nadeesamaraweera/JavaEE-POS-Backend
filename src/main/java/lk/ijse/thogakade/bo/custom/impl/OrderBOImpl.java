@@ -2,11 +2,13 @@ package lk.ijse.thogakade.bo.custom.impl;
 
 import lk.ijse.thogakade.bo.custom.OrderBO;
 import lk.ijse.thogakade.dao.DAOFactory;
+import lk.ijse.thogakade.dao.custom.ItemDAO;
 import lk.ijse.thogakade.dao.custom.OrderDAO;
 import lk.ijse.thogakade.dao.custom.OrderDetailDAO;
 import lk.ijse.thogakade.db.ConnectionManager;
 import lk.ijse.thogakade.dto.ItemDTO;
 import lk.ijse.thogakade.dto.OrderDTO;
+import lk.ijse.thogakade.entity.Item;
 import lk.ijse.thogakade.entity.Order;
 import lk.ijse.thogakade.entity.OrderDetails;
 
@@ -23,6 +25,8 @@ public class OrderBOImpl implements OrderBO {
     OrderDetailDAO orderItemDetailDAO =
             (OrderDetailDAO) DAOFactory.getInstance()
                     .getDAO(DAOFactory.DAOType.ORDER_DETAIL);
+
+    ItemDAO itemDao = (ItemDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.ITEM);
 
     @Override
     public boolean saveOrder(OrderDTO dto) throws SQLException {
@@ -58,6 +62,14 @@ public class OrderBOImpl implements OrderBO {
                 }
             }
         }
+        System.out.println(dto.getItems()+"get Items");
+        if (isOrderSaved){
+            for (ItemDTO item : dto.getItems()) {
+                Item data = itemDao.getData(item.getId());
+                data.setQty(data.getQty() - item.getQty());
+                itemDao.update(data);
+            }
+        }
 
         if (isOrderSaved && isOrderItemSaved) {
             connection.commit();
@@ -88,4 +100,5 @@ public class OrderBOImpl implements OrderBO {
         }
         return orderDTOS;
     }
+
 }
