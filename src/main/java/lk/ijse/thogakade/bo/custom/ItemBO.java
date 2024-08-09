@@ -1,11 +1,12 @@
 package lk.ijse.thogakade.bo.custom;
 
+import lk.ijse.thogakade.bo.SuperBO;
 import lk.ijse.thogakade.dto.ItemDTO;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface ItemBO {
+public interface ItemBO extends SuperBO {
     boolean saveItem(ItemDTO itemDto) throws SQLException;
     ItemDTO searchItem(String id) throws SQLException;
 

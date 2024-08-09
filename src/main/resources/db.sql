@@ -9,9 +9,9 @@ USE thogakade;
 
 
 create table customer(
-                         cust_id VARCHAR(15) PRIMARY KEY,
-                         cust_name VARCHAR(255) NOT NULL,
-                         cust_address VARCHAR(255) NOT NULL,
+                         cust_id VARCHAR(50) PRIMARY KEY,
+                         cust_name VARCHAR(50) NOT NULL,
+                         cust_address VARCHAR(50) NOT NULL,
                          cust_salary DOUBLE NOT NULL
 );
 

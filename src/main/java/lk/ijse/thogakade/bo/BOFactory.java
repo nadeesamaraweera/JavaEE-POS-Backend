@@ -1,10 +1,12 @@
 package lk.ijse.thogakade.bo;
 
+
+import lk.ijse.thogakade.bo.SuperBO;
 import lk.ijse.thogakade.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.thogakade.bo.custom.impl.ItemBOImpl;
+import lk.ijse.thogakade.bo.custom.impl.OrderBOImpl;
 
 public class BOFactory {
-
     private static BOFactory boFactory;
 
     private BOFactory() {}
@@ -15,22 +17,14 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        CUSTOMER, ITEM, Order
+        CUSTOMER, ITEM, ORDER
     }
 
-    public <T extends  SuperBO> T getBO(BOTypes types){
-        switch (types){
-            case CUSTOMER :
-                return (T) new CustomerBOImpl();
-            case ITEM:
-                return (T) new ItemBOImpl();
-//            case ORDER_BO:
-//                return (T) new OrderBOImpl();
-//            case ORDER_DETAILS_BO:
-//                return (T) new OrderDetailsBOImpl();
-
-            default:
-                return null;
-        }
+    public SuperBO getBO(BOTypes boTypes) {
+        return switch (boTypes) {
+            case CUSTOMER -> new CustomerBOImpl();
+            case ITEM -> new ItemBOImpl();
+            case ORDER -> new OrderBOImpl();
+        };
     }
 }

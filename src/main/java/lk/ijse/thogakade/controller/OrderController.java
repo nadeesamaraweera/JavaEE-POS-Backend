@@ -17,7 +17,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/order", loadOnStartup = 1)
 public class OrderController extends HttpServlet {
     static Logger logger = org.slf4j.LoggerFactory.getLogger(OrderController.class);
-    OrderBO orderBO = (OrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.Order);
+    OrderBO orderBO = (OrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ORDER);
 
     @Override
     public void init() throws ServletException {

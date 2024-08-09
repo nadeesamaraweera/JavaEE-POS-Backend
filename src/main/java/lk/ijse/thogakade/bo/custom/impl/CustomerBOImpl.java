@@ -1,5 +1,6 @@
 package lk.ijse.thogakade.bo.custom.impl;
 
+import lk.ijse.thogakade.bo.SuperBO;
 import lk.ijse.thogakade.bo.custom.CustomerBO;
 import lk.ijse.thogakade.dao.DAOFactory;
 import lk.ijse.thogakade.dao.custom.CustomerDAO;

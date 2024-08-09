@@ -1,5 +1,6 @@
 package lk.ijse.thogakade.bo.custom;
 
+import lk.ijse.thogakade.bo.SuperBO;
 import lk.ijse.thogakade.dto.CustomerDTO;
 
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CustomerBO {
+public interface CustomerBO extends SuperBO {
 
     boolean saveCustomer(CustomerDTO customerDto) throws IOException, SQLException;
     CustomerDTO searchCustomer(String id) throws IOException, SQLException;

@@ -18,11 +18,11 @@ import java.util.List;
 public class OrderBOImpl implements OrderBO {
     OrderDAO orderDAO =
             (OrderDAO) DAOFactory.getInstance()
-                    .getDAO(DAOFactory.DAOType.Order);
+                    .getDAO(DAOFactory.DAOType.ORDER);
 
     OrderDetailDAO orderItemDetailDAO =
             (OrderDetailDAO) DAOFactory.getInstance()
-                    .getDAO(DAOFactory.DAOType.OrderDetail);
+                    .getDAO(DAOFactory.DAOType.ORDER_DETAIL);
 
     @Override
     public boolean saveOrder(OrderDTO dto) throws SQLException {
