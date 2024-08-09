@@ -69,7 +69,7 @@ Thogakade POS System is a robust web-based Point of Sale (POS) application desig
 ## Getting Started
 
 * **Prerequisites**: Ensure you have a Java EE environment configured with Tomcat installed on your machine.
-* **Clone the Repository**: Use the command git clone .... to clone the project repository.
+* **Clone the Repository**: Use the command **git clone** https://github.com/nadeesamaraweera/JavaEE-POS-Backend.git.
 * **Setup Database:** Configure your database connection settings in the application.properties file to match your local setup.
 * **Build and Run:** Deploy the generated WAR file to your Tomcat server and start the application.
 
